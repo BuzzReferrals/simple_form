@@ -18,6 +18,12 @@ module SimpleForm
     autoload :Inputs
   end
 
+  def self.eager_load!
+    super
+    SimpleForm::Inputs.eager_load!
+    SimpleForm::Components.eager_load!
+  end
+
   ## CONFIGURATION OPTIONS
 
   # Method used to tidy up errors.
@@ -132,6 +138,10 @@ module SimpleForm
   # Adds a class to each generated button, mostly for compatiblity
   mattr_accessor :button_class
   @@button_class = 'button'
+
+  # Adds a class to each generated inputs
+  mattr_accessor :input_class
+  @@input_class = nil
 
   ## WRAPPER CONFIGURATION
   # The default wrapper to be used by the FormBuilder.
