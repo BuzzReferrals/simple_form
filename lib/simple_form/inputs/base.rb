@@ -65,7 +65,7 @@ module SimpleForm
         @html_classes = SimpleForm.additional_classes_for(:input) { additional_classes }
 
         @input_html_classes = @html_classes.dup
-        if SimpleForm.input_class && !input_html_classes.empty?
+        if SimpleForm.input_class && !input_html_classes.empty? && !SimpleForm.input_class_exclude_input_types.include?(@input_type)
           input_html_classes << SimpleForm.input_class
         end
 
